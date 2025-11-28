@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import CartCounter from "./cartCounter";
+import CartCounter from "./CartCounter";
 
 export default function Nav() {
   const [search, setSearch] = useState("")
