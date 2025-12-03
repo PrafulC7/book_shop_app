@@ -72,7 +72,10 @@ useEffect(() => {
 
 
 const handleCheckout = async () => {
-   try {
+  if(selectedAddress == ""){
+alert("select address first")
+  }else{
+try {
     const filteredItems = booksCart.map(item => ({
     title: item.title,
     description: item.description,
@@ -106,6 +109,8 @@ setOrderPlaced(true)
    } catch (error) {
      console.error("Checkout error:", error);
    }
+  }
+   
      
 };
 

@@ -94,6 +94,7 @@ const Cart = () => {
           <h3 style={{ color: "green", marginTop: "20px" }}>
             ✅ Order Placed Successfully!
           </h3>
+          <button className=' btn btn-warning mt-4'><Link to="/" className="nav-link"><h4>Browse again</h4></Link></button>
         </div>
 )}
  </>   ):(
