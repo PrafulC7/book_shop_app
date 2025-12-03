@@ -7,6 +7,12 @@ export default useBookContext;
 
 
 export const BookProvider = ({ children }) => {
+// const {data: categoriesData, loading:categoryLoading, error:categoryError } = useFetch("http://localhost:3000/categories")
+// const { data: booksData, loading: booksLoading, error: booksError } = useFetch("http://localhost:3000/books");
+// const { data: wishlistData, loading: wishlistLoading, error: wishlistError } = useFetch("http://localhost:3000/wishlist");
+// const { data: cartData, loading: cartLoading, error: cartError } = useFetch("http://localhost:3000/cart");
+// const { data: orderData, loading: orderLoading, error: orderError } = useFetch("http://localhost:3000/orders");
+
   const {data: categoriesData, loading:categoryLoading, error:categoryError } = useFetch("https://backend-fakebooks.vercel.app/categories")
 const { data: booksData, loading: booksLoading, error: booksError } = useFetch("https://backend-fakebooks.vercel.app/books");
 const { data: wishlistData, loading: wishlistLoading, error: wishlistError } = useFetch("https://backend-fakebooks.vercel.app/wishlist");
@@ -116,6 +122,8 @@ setOrderPlaced(true)
       method: "PUT"
     });
     updatedCart = await res.json();
+    toast.success(`Increased quantity of ${product.title}`);
+
   } else {
     // Add new book to backend
     const res = await fetch("https://backend-fakebooks.vercel.app/cart/add", {
@@ -134,7 +142,9 @@ setOrderPlaced(true)
 
     updatedCart = await res.json();
     setBooksCart(updatedCart)
+    toast.success(`${product.title} added to CART`);
   }
+
 }
 
 const moveToCart = async (product) => {
