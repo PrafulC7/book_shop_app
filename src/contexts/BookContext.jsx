@@ -1,9 +1,56 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { toast } from "react-toastify";
 import useFetch from "../useFetch";
+// import { text } from "express";
 const BookContext = createContext();
 const useBookContext = () => useContext(BookContext);
 export default useBookContext;
+const styles = {
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+    gap: "20px",
+    padding: "20px",
+  },
+  card: {
+    position: "relative",
+    // border: "1px solid #ddd",
+    // padding: "5px",
+    // borderRadius: "10px",
+    textAlign: "center",
+    background: "#fff",
+    boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
+  },
+  image: {
+    width: "100%",
+    height: "300px",
+    objectFit: "cover",
+    // borderRadius: "8px",
+    marginBottom: "10px",
+  },
+  price: {
+    fontWeight: "bold",
+    fontSize: "18px",
+    marginBottom: "10px",
+  },
+  btn: {
+    padding: "10px 12px",
+    background: "black",
+    color: "white",
+    border: "none",
+    // borderRadius: "8px",
+    cursor: "pointer",
+        width: "100%",
+
+  },
+  heart: {
+    position: "absolute",
+    top: "10px",
+    right: "10px",
+    cursor: "pointer",
+  },
+};
 
 
 export const BookProvider = ({ children }) => {
@@ -273,13 +320,21 @@ const data = await res.json(); // updated cart after delete
   toast.info(`${product.title} removed from WISHLIST`)
 };
 
+const toggleWishlist = (product) => {
+    const existingBook = wishlist.find(item=>item.title === product.title);
+  if(!existingBook){
+addToWishlist(product)
+  }else{
+    removeFromWishlist(product)
+  }
+}
 const emptyCart = () => {
   setBooksCart([]);
   setCartCounter(0)
 }
 
   return (
-    <BookContext.Provider value={{ categories, books, addBooks, moveToCart, booksCart, cartCounter, wishlist, increaseQty, decreaseQty,removeBook, addToWishlist, removeFromWishlist,numberOfBooks,totalAmount, emptyCart, addresses, setAddresses, selectedAddress, setSelectedAddress, name, setName, email, setEmail, phone, setPhone, handleCheckout, orderPlaced, orders,categoryLoading,categoryError,booksLoading,booksError,wishlistLoading,wishlistError,cartLoading,cartError,orderLoading,orderError}}>
+    <BookContext.Provider value={{ categories, books, addBooks, moveToCart, booksCart, cartCounter, wishlist, increaseQty, decreaseQty,removeBook, addToWishlist, removeFromWishlist,numberOfBooks,totalAmount, emptyCart, addresses, setAddresses, selectedAddress, setSelectedAddress, name, setName, email, setEmail, phone, setPhone, handleCheckout, orderPlaced, orders,categoryLoading,categoryError,booksLoading,booksError,wishlistLoading,wishlistError,cartLoading,cartError,orderLoading,orderError, styles, FaHeart, FaRegHeart, toggleWishlist}}>
       {children}
     </BookContext.Provider>
   );

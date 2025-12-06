@@ -8,7 +8,7 @@ function useQuery() {
 
 let books = []
 const BookListing = () => {
-     const {books,booksLoading,booksError,wishlist,addBooks, addToWishlist} = useBookContext()
+     const {books,booksLoading,booksError,wishlist,addBooks, addToWishlist, styles, FaHeart, FaRegHeart, toggleWishlist} = useBookContext()
 
 const bookCategory = useParams()
     const query = useQuery();
@@ -74,7 +74,7 @@ if(searchTerm != ""){
   return (
     <div>
       {booksLoading&& <p>Loading</p>}
-      {booksError && <p>{booksError}</p>}
+      {/* {booksError && <p>{booksError}</p>} */}
       {/* <input className='form-control py-4' onChange={(e)=>setSearch(e.target.value.toLowerCase())} placeholder='Search books'/> */}
     <div className='row'>
       <div className='col-md-2 px-4 bg-black text-light'>
@@ -137,14 +137,77 @@ if(searchTerm != ""){
           {/* --------------------------------------------- */}
         </div>
 
-        <div className='col-md-10 bg-secondary text-light'>
+        <div className='col-md-10 bg-light'>
       <div className='row'>
       {filteredBooks?.length == 0 ? (
         <div>
         <h3>No books found in this category.</h3>
       </div>) : (
         filteredBooks.map((book) => (
-          <div key={book._id} className="col-md-4 py-3">
+          <div key={book._id} className="col-md-3 py-3">
+          <div style={styles.card}>
+<span
+              onClick={() => toggleWishlist(book)}
+              style={{
+                ...styles.heart,
+                color: wishlist.find(item=>item.title==book.title) ? "red" : "#aaa",
+              }}
+            >
+              {wishlist.find(item=>item.title==book.title) ? <FaHeart size={38} /> : <FaRegHeart size={32} />}
+            </span>
+<Link to={`/bookDetails/${book.title}`}><img src={book.imgUrl} alt={book.title} style={styles.image} /></Link>
+<h3>{book.title}</h3>
+<p>⭐ {book.rating}</p>
+<p style={styles.price}>₹ {book.price}</p>
+<button style={styles.btn} onClick={() => addBooks(book)}>
+              Add to Cart
+            </button>
+              {/* <Link to={`/bookDetails/${book.title}`}>
+            <div className="card bg-dark text-white">
+              <img src={book.imgUrl} className='card-img' alt='book image'/>
+            <div className='card-img-overlay'>
+<h5 className='card-title'>{book.title}</h5>
+
+            </div>
+</div>
+            </Link> */}
+{/* <div className='text-center'>
+<h6>{book.title}</h6>
+<h5>${book.price}</h5>
+<h5>Rating: {book.rating}</h5>
+<button className='btn btn-primary mx-2 my-2' onClick={()=>addBooks(book)}>Add to cart</button>
+{
+  <button
+       className={wishlist.find(item=>item.title==book.title) ? "btn btn-muted mx-2 my-2" : "btn btn-warning mx-2 my-2"}
+         onClick={() => addToWishlist(book)}
+        //  disabled={isInWishlist}
+      >
+        {wishlist.find(item=>item.title==book.title) ? "Added to wishlist" : "Add to wishlist"}
+       </button>
+}
+
+
+
+</div> */}
+
+          </div>
+          </div>
+        ))
+      )}
+      </div>
+    {/* </div>     */}
+    </div>
+    </div>
+    </div>
+  )
+  
+  
+
+}
+
+export default BookListing
+
+{/* <div key={book._id} className="col-md-4 py-3">
               <Link to={`/bookDetails/${book.title}`}>
             <div className="card bg-dark text-white">
               <img src={book.imgUrl} className='card-img' alt='book image'/>
@@ -173,18 +236,4 @@ if(searchTerm != ""){
 
 </div>
 
-          </div>
-        ))
-      )}
-      </div>
-    {/* </div>     */}
-    </div>
-    </div>
-    </div>
-  )
-  
-  
-
-}
-
-export default BookListing
+          </div> */}
