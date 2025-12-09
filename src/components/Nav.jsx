@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CartCounter from "./CartCounter";
-
+import bookLogo from "../assets/bookLogo.png"
 export default function Nav() {
   const [search, setSearch] = useState("")
   const navigate = useNavigate();
@@ -14,11 +14,11 @@ export default function Nav() {
     }
   };
   return (
-    <div className="text-light bg-dark py-4">
+    <div className="text-light bg-dark py-3">
     <nav className="container">
       <div className="d-flex justify-content-between">
       <div className="logo">
-        <Link to="/" className="nav-link"><h4>Book Shop</h4></Link>
+        <Link to="/" className="nav-link"><img src={bookLogo} alt="Logo" style={{width:"40px"}}/></Link>
 </div>
 <div>
 <input type="text" placeholder="Search books" value={search} onChange={handleSearch}/>

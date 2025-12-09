@@ -13,6 +13,16 @@ const styles = {
     gap: "20px",
     padding: "20px",
   },
+  // title: {
+  // fontSize: "18px",
+  // fontWeight: "600",
+  // display: "-webkit-box",
+  // WebkitLineClamp: 2,
+  // WebkitBoxOrient: "vertical",
+  // overflow: "hidden",
+  // textOverflow: "ellipsis",
+  // minHeight: "48px", // keeps height consistent
+// },
   card: {
     position: "relative",
     // border: "1px solid #ddd",
@@ -27,7 +37,7 @@ const styles = {
     height: "300px",
     objectFit: "cover",
     // borderRadius: "8px",
-    marginBottom: "10px",
+    // marginBottom: "10px",
   },
   price: {
     fontWeight: "bold",
