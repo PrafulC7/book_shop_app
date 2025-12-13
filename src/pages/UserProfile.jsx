@@ -2,7 +2,7 @@ import React, { useState} from 'react'
 import useBookContext from '../contexts/BookContext';
 
 const UserProfile = () => {
-  const {addresses, setAddresses, name, setName, email, setEmail, phone, setPhone, orders} = useBookContext()
+  const {addresses, setAddresses, name, setName, email, setEmail, phone, setPhone, orders, orderLoading} = useBookContext()
   const [isEditing, setIsEditing] = useState(false);
    const [activeTab, setActiveTab] = useState("profile");
   
@@ -27,7 +27,7 @@ const UserProfile = () => {
   };
 
   return (
-
+<div className='container'>
  <div style={{ width: "600px", margin: "30px auto" }}>
       <h2>User Profile</h2>
 
@@ -175,7 +175,8 @@ const UserProfile = () => {
 
       {activeTab === "orders" && (
         <div>
-          <h3>Your Orders</h3>
+                {orderLoading&& <h5 className='text-center mt-5'>Loading...</h5>}
+<h3>Your Orders</h3>
           {orders.length === 0 ? (
             <p>No orders available.</p>
           ) : (
@@ -199,6 +200,7 @@ const UserProfile = () => {
           )}
         </div>
       )}
+    </div>
     </div>
 );
 };

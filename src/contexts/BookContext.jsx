@@ -80,9 +80,10 @@ const { data: orderData, loading: orderLoading, error: orderError } = useFetch("
   const [booksCart, setBooksCart] = useState([])
   const [wishlist, setWishlist] = useState([]);
   const [cartCounter, setCartCounter] = useState(0)
+  const [wishlistCounter, setWishlistCounter] = useState(0)
   const [selectedAddress, setSelectedAddress] = useState("");
   const [orderPlaced, setOrderPlaced] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
+  // const [cartItems, setCartItems] = useState([]);
   const [orders, setOrders] = useState([]);
 
   //userProfile
@@ -125,6 +126,10 @@ useEffect(() => {
 useEffect(() => {
   setCartCounter(booksCart.reduce((sum, item) => sum + item.quantity, 0));
 }, [booksCart]);
+
+useEffect(() => {
+  setWishlistCounter(wishlist.length);
+}, [wishlist]);
 
 
 
@@ -342,9 +347,9 @@ const emptyCart = () => {
   setBooksCart([]);
   setCartCounter(0)
 }
-
+// console.log(wishlistCounter)
   return (
-    <BookContext.Provider value={{ categories, books, addBooks, moveToCart, booksCart, cartCounter, wishlist, increaseQty, decreaseQty,removeBook, addToWishlist, removeFromWishlist,numberOfBooks,totalAmount, emptyCart, addresses, setAddresses, selectedAddress, setSelectedAddress, name, setName, email, setEmail, phone, setPhone, handleCheckout, orderPlaced, orders,categoryLoading,categoryError,booksLoading,booksError,wishlistLoading,wishlistError,cartLoading,cartError,orderLoading,orderError, styles, FaHeart, FaRegHeart, toggleWishlist}}>
+    <BookContext.Provider value={{ categories, books, addBooks, moveToCart, booksCart, wishlistCounter, cartCounter, wishlist, increaseQty, decreaseQty,removeBook, addToWishlist, removeFromWishlist,numberOfBooks,totalAmount, emptyCart, addresses, setAddresses, selectedAddress, setSelectedAddress, name, setName, email, setEmail, phone, setPhone, handleCheckout, orderPlaced, orders,categoryLoading,categoryError,booksLoading,booksError,wishlistLoading,wishlistError,cartLoading,cartError,orderLoading,orderError, styles, FaHeart, FaRegHeart, toggleWishlist}}>
       {children}
     </BookContext.Provider>
   );

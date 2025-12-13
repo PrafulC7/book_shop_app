@@ -81,7 +81,7 @@ if(searchTerm != ""){
       </div>) : (
     
     <div className='row'>
-      <div className='col-md-2 px-4 bg-black text-light'>
+      <div className='col-sm-2 px-4 bg-black text-light'>
           <h1>Filter section</h1>
 <h4>Categories</h4>
   {["Fiction", "Self-Help", "Autobiography", "Mystery", "Fantasy", "Horror", "Romance"].map((category) => (
@@ -141,10 +141,13 @@ if(searchTerm != ""){
           {/* --------------------------------------------- */}
         </div>
 
-        <div className='col-md-10 bg-light'>
+        <div className='col-sm-10 bg-light'>
+      <div className='container'>
       <div className='row'>
       {filteredBooks.map((book) => (
-          <div key={book._id} className="col-md-3 py-3">
+          <div key={book._id} className="col-sm-5 col-md-4 col-lg-3 py-3">
+                  {/* <div style={styles.grid}> */}
+
           <div style={styles.card}>
 <span
               onClick={() => toggleWishlist(book)}
@@ -165,8 +168,11 @@ if(searchTerm != ""){
 
           </div>
           </div>
+                // </div>
+
         ))
 }
+      </div>
       </div>
     {/* </div>     */}
     </div>

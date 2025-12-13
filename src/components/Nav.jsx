@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CartCounter from "./CartCounter";
+import WishlistCounter from "./WishlistCounter";
 import bookLogo from "../assets/bookLogo.png"
 export default function Nav() {
   const [search, setSearch] = useState("")
@@ -28,7 +29,8 @@ export default function Nav() {
 <Link to="userProfile" className="nav-link"><i className="bi bi-person-circle"></i></Link>
 </div>
     <div style={{ fontSize: '26px' }}>
-<Link to="wishList" className="nav-link"><i className="bi bi-heart"></i></Link>
+<Link to="wishlist" className="nav-link d-flex gap-2"><i className="bi bi-heart"></i>
+<h5><WishlistCounter/></h5></Link>
 </div>
 <div style={{ fontSize: '26px' }}>
 <Link to="cart" className="nav-link d-flex gap-2"><i className="bi bi-cart4"></i>
