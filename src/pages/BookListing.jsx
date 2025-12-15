@@ -73,14 +73,9 @@ if(searchTerm != ""){
   
   return (
     <div>
-      {booksLoading&& <h5 className='text-center mt-5'>Loading...</h5>}
-      
-    {filteredBooks?.length == 0 ? (
-        <div>
-        {/* <h3>No books found in this category.</h3> */}
-      </div>) : (
-    
-    <div className='row'>
+      {booksLoading ? (<h5 className='text-center mt-5'>Loading...</h5>):(
+        <>
+        <div className='row'>
       <div className='col-sm-2 px-4 bg-black text-light'>
           <h1>Filter section</h1>
 <h4>Categories</h4>
@@ -144,7 +139,11 @@ if(searchTerm != ""){
         <div className='col-sm-10 bg-light'>
       <div className='container'>
       <div className='row'>
-      {filteredBooks.map((book) => (
+{filteredBooks?.length == 0 ? (
+        <div>
+        <h3 className='text-center mt-5'>No Books Found.</h3>
+      </div>) : (<>
+{filteredBooks.map((book) => (
           <div key={book._id} className="col-sm-5 col-md-4 col-lg-3 py-3">
                   {/* <div style={styles.grid}> */}
 
@@ -168,22 +167,20 @@ if(searchTerm != ""){
 
           </div>
           </div>
-                // </div>
 
         ))
 }
-      </div>
-      </div>
-    {/* </div>     */}
+         </>)}
     </div>
     </div>
-    )}
     </div>
-  )
+    </div>
+        </>
+      )}
   
-  
-
-}
+    </div>
+      )
+  }
 
 export default BookListing
 

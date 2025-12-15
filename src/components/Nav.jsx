@@ -38,14 +38,6 @@ export default function Nav() {
 </div>
       </div>
       </div>
-      {/* <div className="links">
-        <Link to="/" className="nav-link">
-          All Books
-        </Link>
-        <Link to="/addBooks" className="nav-link">
-         Add Books
-        </Link>
-        </div> */}
     </nav>
     </div>
   );

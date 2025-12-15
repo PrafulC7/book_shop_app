@@ -5,9 +5,9 @@ const Cart = () => {
   const {booksCart,wishlist,cartLoading,cartError, increaseQty,decreaseQty,removeBook,addToWishlist,numberOfBooks,totalAmount, addresses, selectedAddress, setSelectedAddress, handleCheckout, orderPlaced, orders} = useBookContext()
   return (
     <>
-    {cartLoading&& <p>Loading</p>}
-      {/* {cartError && <p>{booksCart?.error}</p>} */}
-    {booksCart.length>0?(
+    {cartLoading? (<h4 className='text-center mt-5'>Loading...</h4>):(
+      <>
+      {booksCart.length>0?(
       <>
 {!orderPlaced?(
   <>
@@ -57,12 +57,12 @@ const Cart = () => {
       <ul style={{ listStyle: "none", padding: 0 }}>
         {booksCart.map((item) => (
           <li key={item._id}>
-            {item.title} — ₹{item.price}
+            {item.title} — ${item.price}
           </li>
         ))}
       </ul>
 
-      <h4>Total: ₹{totalAmount}</h4>
+      <h4>Total: ${totalAmount}</h4>
 
       <button
         onClick={handleCheckout}
@@ -87,7 +87,7 @@ const Cart = () => {
 <div className="text-center mt-10">
           <h2>🛍️ Order Summary</h2>
           <p><strong>Items:</strong> {numberOfBooks}</p>
-          <p><strong>Total:</strong> ₹{orders.at(-1)?.totalAmount}</p>
+          <p><strong>Total:</strong> ${orders.at(-1)?.totalAmount}</p>
           <p><strong>Shipping to:</strong> {selectedAddress}</p>
           <p><strong>Name:</strong> {orders.at(-1)?.name}</p>
           <p><strong>Phone:</strong> {orders.at(-1)?.phone}</p>
@@ -100,6 +100,9 @@ const Cart = () => {
  </>   ):(
      <h1 className='text-center mt-5'>cart is empty</h1> 
     )}
+      </>
+    )}
+    
 </>
 )
 }

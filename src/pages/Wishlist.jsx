@@ -2,14 +2,13 @@ import React from 'react'
 import useBookContext from '../contexts/BookContext'
 import { Link } from 'react-router-dom'
 const Wishlist = () => {
-    const {wishlist,wishlistLoading,wishlistError, removeFromWishlist, moveToCart} = useBookContext()
+    const {wishlist, wishlistLoading, wishlistError, removeFromWishlist, moveToCart} = useBookContext()
     // console.log(wishlist)
   return (
     <>
-    
-      {wishlistLoading&& <p>Loading</p>}
-      {/* {wishlistError && <p>{wishlist?.error}</p>} */}
-{wishlist.length == 0 ? (
+    {wishlistLoading?(<h4 className='text-center mt-5'>Loading...</h4>):(
+      <>
+      {wishlist.length == 0 ? (
         <div>
      <h1 className='text-center mt-5'>Wishlist is empty</h1> 
       </div>):(<div className='bg-secondary text-light'>
@@ -27,7 +26,9 @@ const Wishlist = () => {
 </div>
 </div>
 )}
-    </>
+      </>
+    )}
+  </>
 
     
   )
