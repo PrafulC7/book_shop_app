@@ -12,7 +12,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'
-
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 function App() {
       // const {books} = useBookContext()
 return (

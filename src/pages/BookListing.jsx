@@ -160,7 +160,7 @@ if(searchTerm != ""){
 <Link to={`/bookDetails/${book.title}`}><img src={book.imgUrl} alt={book.title} style={styles.image} /></Link>
 <h4>{book.title}</h4>
 <p>⭐ {book.rating}</p>
-<p style={styles.price}>₹ {book.price}</p>
+<p style={styles.price}>$ {book.price}</p>
 <button style={styles.btn} onClick={() => addBooks(book)}>
               Add to Cart
             </button>

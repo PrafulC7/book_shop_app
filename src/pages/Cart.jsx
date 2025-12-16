@@ -17,8 +17,10 @@ const Cart = () => {
      <div className='container'>
  <h1 className='text-center '>Cart</h1>
  {booksCart?.map(book=>(<div key={book._id}> <Link to={`/bookDetails/${book.title}`}><img className='w-25 p-4' src={book.imgUrl}/></Link>${book.price} {book.title} ({book.quantity})
+   <div>
    <button className='btn btn-primary mx-2 my-2' onClick={() => increaseQty(book)}>+</button>
      <button className='btn btn-primary mx-2 my-2' onClick={() => decreaseQty(book)}>-</button>
+     </div>
     <button className='btn btn-danger mx-2 my-2' onClick={() => removeBook(book)}>Remove from Cart</button>
     {
   <button
@@ -34,7 +36,7 @@ const Cart = () => {
 
      </div>
     </div>
-     <div className='col-md-4 text-center '>
+     <div className='col-md-4 text-center pb-5 mb-5'>
        
 
 <h1>Checkout</h1>

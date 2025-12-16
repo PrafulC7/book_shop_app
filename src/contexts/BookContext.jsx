@@ -35,7 +35,7 @@ const styles = {
   image: {
     width: "100%",
     height: "300px",
-    objectFit: "cover",
+    // objectFit: "cover",
     // borderRadius: "8px",
     // marginBottom: "10px",
   },
