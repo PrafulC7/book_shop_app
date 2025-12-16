@@ -76,7 +76,7 @@ if(searchTerm != ""){
       {booksLoading ? (<h5 className='text-center mt-5'>Loading...</h5>):(
         <>
         <div className='row'>
-      <div className='col-sm-2 px-4 bg-black text-light'>
+      <div className='col-sm-3 col-lg-2 px-4 bg-black text-light'>
           <h1>Filter section</h1>
 <h4>Categories</h4>
   {["Fiction", "Self-Help", "Autobiography", "Mystery", "Fantasy", "Horror", "Romance"].map((category) => (
@@ -127,16 +127,15 @@ if(searchTerm != ""){
       onChange={handleSortChange}
     />
     High to Low
-  </label>
-<br/>
-<br/>
-
-  
- <button onClick={clearFilters}>Clear Filters</button>
+  </label> 
+    <br/>
+    <br/>
+ 
+ <button onClick={clearFilters} className='mb-sm-2 mb-md-5'>Clear Filters</button>
           {/* --------------------------------------------- */}
         </div>
 
-        <div className='col-sm-10 bg-light'>
+        <div className='col-sm-9 col-lg-10 bg-light mb-sm-4 mb-md-5'>
       <div className='container'>
       <div className='row'>
 {filteredBooks?.length == 0 ? (
@@ -144,7 +143,7 @@ if(searchTerm != ""){
         <h3 className='text-center mt-5'>No Books Found.</h3>
       </div>) : (<>
 {filteredBooks.map((book) => (
-          <div key={book._id} className="col-sm-5 col-md-4 col-lg-3 py-3">
+          <div key={book._id} className="col-sm-5 col-md-6 col-lg-3 py-3 d-flex">
                   {/* <div style={styles.grid}> */}
 
           <div style={styles.card}>

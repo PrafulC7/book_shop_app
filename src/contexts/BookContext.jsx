@@ -25,6 +25,8 @@ const styles = {
 // },
   card: {
     position: "relative",
+    // height:"100%",
+    // width:"100%",
     // border: "1px solid #ddd",
     // padding: "5px",
     // borderRadius: "10px",

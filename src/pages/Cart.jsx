@@ -13,7 +13,7 @@ const Cart = () => {
   <>
 
       <div className='row bg-secondary text-light pt-3'>
-     <div className=' col-md-8'>
+     <div className=' col-md-8 mb-sm-0 mb-md-5'>
      <div className='container'>
  <h1 className='text-center '>Cart</h1>
  {booksCart?.map(book=>(<div key={book._id}> <Link to={`/bookDetails/${book.title}`}><img className='w-25 p-4' src={book.imgUrl}/></Link>${book.price} {book.title} ({book.quantity})
@@ -36,7 +36,7 @@ const Cart = () => {
 
      </div>
     </div>
-     <div className='col-md-4 text-center pb-5 mb-5'>
+     <div className='col-md-4 text-center pb-5 mb-5 mt-3 mt-md-0'>
        
 
 <h1>Checkout</h1>
