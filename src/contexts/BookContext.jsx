@@ -71,12 +71,14 @@ export const BookProvider = ({ children }) => {
 // const { data: wishlistData, loading: wishlistLoading, error: wishlistError } = useFetch("http://localhost:3000/wishlist");
 // const { data: cartData, loading: cartLoading, error: cartError } = useFetch("http://localhost:3000/cart");
 // const { data: orderData, loading: orderLoading, error: orderError } = useFetch("http://localhost:3000/orders");
+// const {data: categoriesData, loading:categoryLoading, error:categoryError } = useFetch("https://backend-fakebooks.vercel.app/categories")
+const API = import.meta.env.VITE_API_URL;
 
-  const {data: categoriesData, loading:categoryLoading, error:categoryError } = useFetch("https://backend-fakebooks.vercel.app/categories")
-const { data: booksData, loading: booksLoading, error: booksError } = useFetch("https://backend-fakebooks.vercel.app/books");
-const { data: wishlistData, loading: wishlistLoading, error: wishlistError } = useFetch("https://backend-fakebooks.vercel.app/wishlist");
-const { data: cartData, loading: cartLoading, error: cartError } = useFetch("https://backend-fakebooks.vercel.app/cart");
-const { data: orderData, loading: orderLoading, error: orderError } = useFetch("https://backend-fakebooks.vercel.app/orders");
+const {data: categoriesData, loading:categoryLoading, error:categoryError } = useFetch(`${API}/categories`)
+const { data: booksData, loading: booksLoading, error: booksError } = useFetch(`${API}/books`);
+const { data: wishlistData, loading: wishlistLoading, error: wishlistError } = useFetch(`${API}/wishlist`);
+const { data: cartData, loading: cartLoading, error: cartError } = useFetch(`${API}/cart`);
+const { data: orderData, loading: orderLoading, error: orderError } = useFetch(`${API}/orders`);
  const [categories, setCategories] = useState([]);
  const [books, setBooks] = useState([]);
   const [booksCart, setBooksCart] = useState([])
@@ -149,7 +151,7 @@ try {
     quantity: item.quantity,
     category: item.category
   }));
-     const res = await fetch("https://backend-fakebooks.vercel.app/orders/place", {
+     const res = await fetch(`${API}/orders/place`, {
        method: "POST",
        headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -187,7 +189,7 @@ setOrderPlaced(true)
 
   if (existingBook) {
     // Increase quantity in backend
-    const res = await fetch(`https://backend-fakebooks.vercel.app/cart/increase/${existingBook._id}`, {
+    const res = await fetch(`${API}/cart/increase/${existingBook._id}`, {
       method: "PUT"
     });
     updatedCart = await res.json();
@@ -195,7 +197,7 @@ setOrderPlaced(true)
 
   } else {
     // Add new book to backend
-    const res = await fetch("https://backend-fakebooks.vercel.app/cart/add", {
+    const res = await fetch(`${API}/cart/add`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -222,13 +224,13 @@ const moveToCart = async (product) => {
 
   if (existingBook) {
     // Increase quantity in backend
-    const res = await fetch(`https://backend-fakebooks.vercel.app/cart/increase/${existingBook._id}`, {
+    const res = await fetch(`${API}/cart/increase/${existingBook._id}`, {
       method: "PUT"
     });
     updatedCart = await res.json();
   } else {
     // Add new book to backend
-    const res = await fetch("https://backend-fakebooks.vercel.app/cart/add", {
+    const res = await fetch(`${API}/cart/add`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -257,7 +259,7 @@ const increaseQty = async (product) => {
       let updatedCart;
 const existingBook = booksCart.find((item)=>item.title == product.title)
       if (existingBook){
-         const res = await fetch(`https://backend-fakebooks.vercel.app/cart/increase/${existingBook._id}`, {
+         const res = await fetch(`${API}/cart/increase/${existingBook._id}`, {
       method: "PUT"
     });
         updatedCart = await res.json();
@@ -270,7 +272,7 @@ const decreaseQty = async (product) => {
  const existingBook = booksCart.find((item)=>item.title == product.title)
       let updatedCart;
       if (existingBook.quantity>1){
-const res = await fetch(`https://backend-fakebooks.vercel.app/cart/decrease/${existingBook._id}`, {
+const res = await fetch(`${API}/cart/decrease/${existingBook._id}`, {
       method: "PUT"
     });
   updatedCart = await res.json();
@@ -286,7 +288,7 @@ setBooksCart(updatedCart);
 const removeBook = async (product) => {
   const bookToRemove = booksCart.find((item)=>item.title == product.title)
 try {
-    const res = await fetch(`https://backend-fakebooks.vercel.app/cart/delete/${bookToRemove._id}`, {
+    const res = await fetch(`${API}/cart/delete/${bookToRemove._id}`, {
       method: "DELETE",
     });
 const data = await res.json(); // updated cart after delete
@@ -303,7 +305,7 @@ const addToWishlist = async (product) =>{
   let updatedWishlist;
 const existingBook = wishlist.find(item=>item.title === product.title);
   if(!existingBook){
-const res = await fetch("https://backend-fakebooks.vercel.app/wishlist/add", {
+const res = await fetch(`${API}/wishlist/add`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -326,7 +328,7 @@ toast.success(`${product.title} added to WISHLIST`);
 const removeFromWishlist = async (product) => {
   const bookToRemove = wishlist.find((item)=>item.title == product.title)
 try {
-    const res = await fetch(`https://backend-fakebooks.vercel.app/wishlist/delete/${bookToRemove._id}`, {
+    const res = await fetch(`${API}/wishlist/delete/${bookToRemove._id}`, {
       method: "DELETE",
     });
 const data = await res.json(); // updated cart after delete
