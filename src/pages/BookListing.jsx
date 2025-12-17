@@ -76,8 +76,17 @@ if(searchTerm != ""){
       {booksLoading ? (<h5 className='text-center mt-5'>Loading...</h5>):(
         <>
         <div className='row'>
-      <div className='col-sm-3 col-lg-2 px-4 bg-black text-light'>
-          <h1>Filter section</h1>
+          <div className="d-sm-none p-2">
+    <button
+      className="btn btn-dark w-100"
+      data-bs-toggle="collapse"
+      data-bs-target="#filterPanel"
+    >
+      Filters
+    </button>
+  </div>
+      <div id="filterPanel" className='col-sm-3 col-lg-2 px-4 bg-black text-light collapse d-sm-block'>
+          <h4 className='pt-3'>Filter section</h4>
 <h4>Categories</h4>
   {["Fiction", "Self-Help", "Autobiography", "Mystery", "Fantasy", "Horror", "Romance"].map((category) => (
     <div key={category}>
@@ -182,4 +191,5 @@ if(searchTerm != ""){
   }
 
 export default BookListing
+
 

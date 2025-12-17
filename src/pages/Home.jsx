@@ -4,11 +4,10 @@ import useBookContext from '../contexts/BookContext'
 const Home = () => {
     const {categories,categoryLoading,categoryError, styles} = useBookContext()
   return (
-    <div>
     <div className='container'>
       {categoryLoading&&  <h5 className='text-center mt-5'>Loading...</h5>}
       {categoryError && <p>{categories?.error}</p>}
-<div className="row">
+<div className="row mb-5">
           {categories?.length > 0 ? (
            <>
                 <h1>Home</h1>
@@ -37,7 +36,6 @@ const Home = () => {
     </div>
   )
 }
-    </div>
     </div>
     </div>
   )
