@@ -98,6 +98,8 @@ const { data: orderData, loading: orderLoading, error: orderError } = useFetch(`
 const numberOfBooks = booksCart.reduce((acc,item)=>acc + item.quantity,0)
   const totalAmount = booksCart.reduce((acc,item)=>acc + item.price*item.quantity,0)
 
+console.log("API URL:", import.meta.env.VITE_API_URL);
+
   useEffect(() => {
   if (categoriesData) {
     setCategories(categoriesData);

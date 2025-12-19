@@ -85,7 +85,7 @@ if(searchTerm != ""){
       Filters
     </button>
   </div>
-      <div id="filterPanel" className='col-sm-3 col-lg-2 px-4 bg-black text-light collapse d-sm-block'>
+      <div id="filterPanel" className='col-sm-3 col-lg-2 px-4 bg-black text-light collapse d-sm-block d-flex min-vh-100'>
           <h4 className='pt-3'>Filter section</h4>
 <h4>Categories</h4>
   {["Fiction", "Self-Help", "Autobiography", "Mystery", "Fantasy", "Horror", "Romance"].map((category) => (
@@ -144,7 +144,7 @@ if(searchTerm != ""){
           {/* --------------------------------------------- */}
         </div>
 
-        <div className='col-sm-9 col-lg-10 bg-light mb-sm-4 mb-md-5'>
+        <div className='col-sm-9 col-lg-10 bg-light mb-sm-4 mb-md-5 flex-grow-1'>
       <div className='container'>
       <div className='row'>
 {filteredBooks?.length == 0 ? (
@@ -191,5 +191,15 @@ if(searchTerm != ""){
   }
 
 export default BookListing
+//         <div className='row'>   
+//               <div id="filterPanel" className='col-sm-3 col-lg-2 px-4 bg-black text-light collapse d-sm-block d-flex h-100'>
+//           <h4 className='pt-3'>Filter section</h4>
+// </div>
+//         <div className='col-sm-9 col-lg-10 bg-danger mb-sm-4 mb-md-5 d-flex h-100'>
+//           <h4 className='pt-3'>Books section</h4>
+
+//          </div>
+//          </div>
+
 
 
