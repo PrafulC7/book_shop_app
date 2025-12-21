@@ -85,7 +85,7 @@ if(searchTerm != ""){
       Filters
     </button>
   </div>
-      <div id="filterPanel" className='col-sm-3 col-lg-2 px-4 bg-black text-light collapse d-sm-block d-flex min-vh-100'>
+      <div id="filterPanel" className='col-sm-3 col-lg-2 px-4 pb-sm-0 pb-md-2 bg-black text-light collapse d-sm-block min-vh-100'>
           <h4 className='pt-3'>Filter section</h4>
 <h4>Categories</h4>
   {["Fiction", "Self-Help", "Autobiography", "Mystery", "Fantasy", "Horror", "Romance"].map((category) => (
@@ -201,5 +201,5 @@ export default BookListing
 //          </div>
 //          </div>
 
-
-
+// 88 d-flex min-vh-100
+// 147 flex-grow-1
