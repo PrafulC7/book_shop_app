@@ -191,15 +191,34 @@ const UserProfile = () => {
           ) : (
             <div className='row pb-5'>
             {[...orders].reverse().map(order => (
-<div  key={order._id} className='col-sm-12 col-md-6 col-lg-4 my-2 d-flex'>
-              <div className='card h-100 w-100'>
+<div key={order._id} className='col-sm-12 col-md-6 col-lg-4 my-2 d-flex'>
+              <div className='card'>
                 <div className='card-body'>
                 <p><strong>Order ID:</strong> {order._id}</p>
                 <p><strong>Date:</strong> {formatDate(order.createdAt)}</p>
                 <p><strong>Number of Products:</strong> {order.items.length}</p>
-                <div><strong>Items:</strong> {order.items.map((item, index)=>(<div key={index}>{item.title}<img className='w-25 p-4' src={item.imgUrl}/><strong>({item.quantity} {item.quantity > 1 ? "items" : "item"})</strong> of price <strong>${item.price}</strong> each</div>))}</div>
-                {/* <p><strong>Items:</strong> {items}</p> */}
-                <p><strong>Amount:</strong> ${order.totalAmount}</p>
+                <div><strong>Items:</strong>
+                <ol> 
+                {order.items.map((item, index)=>(
+                  <li key={index}>
+                  <div className='row mb-2'>
+                    <div className='col-sm-12'>
+                    {item.title}
+                    </div>
+                    <div className='col-sm-12'>
+                  <img className='w-100 p-2' src={item.imgUrl}/>
+                  </div>
+                  <div className='col-sm-12'>
+                  <strong>({item.quantity} {item.quantity > 1 ? "items" : "item"})</strong> of price <strong>
+                    ${item.price}</strong> each
+                    </div>
+                    
+                    </div>
+                    </li>
+                  ))}
+                    </ol>
+                    </div>
+                <p><strong>Order Amount:</strong> ${order.totalAmount}</p>
               </div>
               </div>
               </div>
