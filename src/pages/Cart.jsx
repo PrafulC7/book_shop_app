@@ -14,11 +14,13 @@ const Cart = () => {
 
      <div className='container'>
       <div className='row pt-3'>
-     <div className=' col-lg-9 mb-sm-0 mb-md-5'>
+     <div className='col-lg-9 mb-sm-0 mb-md-5'>
  <h1 className='text-center'>Cart</h1>
- {booksCart?.map(book=>(<div key={book._id} className='row'>
+ <div className='row'>
+ {booksCart?.map(book=>(<div key={book._id} className='col-sm-12 col-md-6 col-lg-12'>
+  <div className='row'>
    <div className='col-sm-12 col-lg-4'>
-    <Link to={`/bookDetails/${book.title}`}><img className='w-100 p-4' src={book.imgUrl}/></Link>
+    <Link to={`/bookDetails/${book.title}`}><img className='w-100 p-2' src={book.imgUrl}/></Link>
     </div>
     <div className='col-sm-12 col-lg-4 d-flex align-items-center justify-content-center'>
       ${book.price} {book.title} ({book.quantity})
@@ -37,9 +39,10 @@ const Cart = () => {
        </button>
 }
 </div>
+</div>
  </div>))}
 
-     {/* </div> */}
+     </div>
     </div>
      <div className='col-lg-3 text-center pb-5 mb-5 mt-3 mt-md-0'>
        

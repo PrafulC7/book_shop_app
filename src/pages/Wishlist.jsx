@@ -19,7 +19,7 @@ const Wishlist = () => {
   <div>
 <div className='row'>
 <div className='col-sm-12'>
-                 <Link to={`/bookDetails/${book.title}`}><img className='w-100 p-4' src={book.imgUrl}/></Link>
+                 <Link to={`/bookDetails/${book.title}`}><img className='w-100 p-2' src={book.imgUrl}/></Link>
 </div>
 <div className='col-sm-12 d-flex align-items-center justify-content-center'>
 {book.title}
