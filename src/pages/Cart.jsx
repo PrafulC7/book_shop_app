@@ -12,15 +12,20 @@ const Cart = () => {
 {!orderPlaced?(
   <>
 
-      <div className='row pt-3'>
-     <div className=' col-md-8 mb-sm-0 mb-md-5'>
      <div className='container'>
- <h1 className='text-center '>Cart</h1>
- {booksCart?.map(book=>(<div key={book._id}> <Link to={`/bookDetails/${book.title}`}><img className='w-25 p-4' src={book.imgUrl}/></Link>${book.price} {book.title} ({book.quantity})
-   <div>
-   <button className='btn btn-primary mx-2 my-2' onClick={() => increaseQty(book)}>+</button>
-     <button className='btn btn-primary mx-2 my-2' onClick={() => decreaseQty(book)}>-</button>
+      <div className='row pt-3'>
+     <div className=' col-lg-9 mb-sm-0 mb-md-5'>
+ <h1 className='text-center'>Cart</h1>
+ {booksCart?.map(book=>(<div key={book._id} className='row'>
+   <div className='col-sm-12 col-lg-4'>
+    <Link to={`/bookDetails/${book.title}`}><img className='w-100 p-4' src={book.imgUrl}/></Link>
+    </div>
+    <div className='col-sm-12 col-lg-4 d-flex align-items-center justify-content-center'>
+      ${book.price} {book.title} ({book.quantity})
+   <button className='btn btn-primary mx-2' onClick={() => increaseQty(book)}>+</button>
+     <button className='btn btn-primary mx-2' onClick={() => decreaseQty(book)}>-</button>
      </div>
+     <div className='col-sm-12 col-lg-4 d-flex align-items-center justify-content-center'>
     <button className='btn btn-danger mx-2 my-2' onClick={() => removeBook(book)}>Remove from Cart</button>
     {
   <button
@@ -31,12 +36,12 @@ const Cart = () => {
         {wishlist.find(item=>item.title==book.title) ? "Added to wishlist" : "Add to wishlist"}
        </button>
 }
-
+</div>
  </div>))}
 
-     </div>
+     {/* </div> */}
     </div>
-     <div className='col-md-4 text-center pb-5 mb-5 mt-3 mt-md-0'>
+     <div className='col-lg-3 text-center pb-5 mb-5 mt-3 mt-md-0'>
        
 
 <h1>Checkout</h1>
@@ -83,6 +88,7 @@ const Cart = () => {
   
 
  </div>     
+</div>
 </div>
 </>
 ):(
