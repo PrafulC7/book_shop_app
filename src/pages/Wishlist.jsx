@@ -11,7 +11,7 @@ const Wishlist = () => {
       {wishlist.length == 0 ? (
         <div>
      <h1 className='text-center mt-5'>Wishlist is empty</h1> 
-      </div>):(<div className='bg-secondary text-light'>
+      </div>):(<div>
         <div className='container'>
 <h1>WishList</h1>
 {wishlist.map(book=>(<div key={book._id}>

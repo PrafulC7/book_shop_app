@@ -12,7 +12,7 @@ const Cart = () => {
 {!orderPlaced?(
   <>
 
-      <div className='row bg-secondary text-light pt-3'>
+      <div className='row pt-3'>
      <div className=' col-md-8 mb-sm-0 mb-md-5'>
      <div className='container'>
  <h1 className='text-center '>Cart</h1>

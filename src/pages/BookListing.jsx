@@ -75,7 +75,7 @@ if(searchTerm != ""){
     <div>
       {booksLoading ? (<h5 className='text-center mt-5'>Loading...</h5>):(
         <>
-        <div className='row'>
+        <div className='row layout-wrapper'>
           <div className="d-sm-none p-2">
     <button
       className="btn btn-dark w-100"
@@ -85,8 +85,9 @@ if(searchTerm != ""){
       Filters
     </button>
   </div>
-      <div id="filterPanel" className='col-sm-3 col-lg-2 px-4 pb-sm-0 pb-md-2 bg-black text-light collapse d-sm-block min-vh-100'>
-          <h4 className='pt-3'>Filter section</h4>
+      <div id="filterPanel" className='col-sm-3 col-lg-2 px-4 pb-sm-2 pb-md-2 bg-black text-light collapse d-sm-block'>
+          <div className='filter-section'>
+          <h4 className='pt-md-3'>Filter section</h4>
 <h4>Categories</h4>
   {["Fiction", "Self-Help", "Autobiography", "Mystery", "Fantasy", "Horror", "Romance"].map((category) => (
     <div key={category}>
@@ -143,9 +144,10 @@ if(searchTerm != ""){
  <button onClick={clearFilters} className='mb-sm-2 mb-md-5'>Clear Filters</button>
           {/* --------------------------------------------- */}
         </div>
+        </div>
 
-        <div className='col-sm-9 col-lg-10 bg-light mb-sm-4 mb-md-5 flex-grow-1'>
-      <div className='container'>
+        <div className='col-sm-9 col-lg-10 bg-light mb-sm-4 mb-md-5'>
+      <div className='container books'>
       <div className='row'>
 {filteredBooks?.length == 0 ? (
         <div>
@@ -203,3 +205,10 @@ export default BookListing
 
 // 88 d-flex min-vh-100
 // 147 flex-grow-1
+
+// @media (min-width: 768px) {
+//   .books-section {
+//     flex-grow: 1;
+//   }
+// }
+
