@@ -2,7 +2,7 @@ import React from 'react'
 import useBookContext from '../contexts/BookContext'
 import { Link } from 'react-router-dom'
 const Wishlist = () => {
-    const {wishlist, wishlistLoading, wishlistError, removeFromWishlist, moveToCart} = useBookContext()
+    const {wishlist, wishlistLoading, wishlistError, removeFromWishlist, moveToCart, styles} = useBookContext()
     // console.log(wishlist)
   return (
     <>
@@ -15,11 +15,11 @@ const Wishlist = () => {
         <div className='container pb-5 pt-3'>
 <h1 className='text-center'>WishList</h1>
 <div className='row'>
-{wishlist.map(book=>(<div key={book._id} className='col-sm-12 col-md-6 col-lg-4 my-2'>
+{wishlist.map(book=>(<div key={book._id} className='col-sm-12 col-md-6 col-lg-4 my-2 d-flex'>
   <div>
 <div className='row'>
-<div className='col-sm-12'>
-                 <Link to={`/bookDetails/${book.title}`}><img className='w-100 p-2' src={book.imgUrl}/></Link>
+<div className='col-sm-12 d-flex align-items-center justify-content-center'>
+                 <Link to={`/bookDetails/${book.title}`}><img style={styles.image} src={book.imgUrl}/></Link>
 </div>
 <div className='col-sm-12 d-flex align-items-center justify-content-center'>
 {book.title}

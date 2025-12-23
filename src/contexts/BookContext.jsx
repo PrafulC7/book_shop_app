@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { toast } from "react-toastify";
 import useFetch from "../useFetch";
+
 // import { text } from "express";
 const BookContext = createContext();
 const useBookContext = () => useContext(BookContext);
@@ -136,8 +137,6 @@ useEffect(() => {
 useEffect(() => {
   setWishlistCounter(wishlist.length);
 }, [wishlist]);
-
-
 
 const handleCheckout = async () => {
   if(selectedAddress == ""){
@@ -353,9 +352,10 @@ const emptyCart = () => {
   setBooksCart([]);
   setCartCounter(0)
 }
+
 // console.log(wishlistCounter)
   return (
-    <BookContext.Provider value={{ categories, books, addBooks, moveToCart, booksCart, wishlistCounter, cartCounter, wishlist, increaseQty, decreaseQty,removeBook, addToWishlist, removeFromWishlist,numberOfBooks,totalAmount, emptyCart, addresses, setAddresses, selectedAddress, setSelectedAddress, name, setName, email, setEmail, phone, setPhone, handleCheckout, orderPlaced, orders,categoryLoading,categoryError,booksLoading,booksError,wishlistLoading,wishlistError,cartLoading,cartError,orderLoading,orderError, styles, FaHeart, FaRegHeart, toggleWishlist}}>
+    <BookContext.Provider value={{ categories, books, addBooks, moveToCart, booksCart, wishlistCounter, cartCounter, wishlist, increaseQty, decreaseQty,removeBook, addToWishlist, removeFromWishlist,numberOfBooks,totalAmount, emptyCart, addresses, setAddresses, selectedAddress, setSelectedAddress, name, setName, email, setEmail, phone, setPhone, handleCheckout, orderPlaced, setOrderPlaced, orders, categoryLoading,categoryError,booksLoading,booksError,wishlistLoading,wishlistError,cartLoading,cartError,orderLoading,orderError, styles, FaHeart, FaRegHeart, toggleWishlist}}>
       {children}
     </BookContext.Provider>
   );

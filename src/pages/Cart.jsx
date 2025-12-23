@@ -1,8 +1,15 @@
 import useBookContext from '../contexts/BookContext'
-import { Link } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
-  const {booksCart,wishlist,cartLoading,cartError, increaseQty,decreaseQty,removeBook,addToWishlist,numberOfBooks,totalAmount, addresses, selectedAddress, setSelectedAddress, handleCheckout, orderPlaced, orders} = useBookContext()
+  const {booksCart,wishlist,cartLoading,cartError, increaseQty,decreaseQty,removeBook,addToWishlist,numberOfBooks,totalAmount, addresses, selectedAddress, setSelectedAddress, handleCheckout, orderPlaced, setOrderPlaced, emptyCart, orders} = useBookContext()
+  const navigate = useNavigate();
+   const handleBrowseAgain = () => {
+  setOrderPlaced(false); // ✅ reset state
+  emptyCart()  
+  navigate("/");           // go home
+};
   return (
     <>
     {cartLoading? (<h4 className='text-center mt-5'>Loading...</h4>):(
@@ -105,7 +112,7 @@ const Cart = () => {
           <h3 style={{ color: "green", marginTop: "20px" }}>
             ✅ Order Placed Successfully!
           </h3>
-          <button className=' btn btn-warning mt-4'><Link to="/" className="nav-link"><h4>Browse again</h4></Link></button>
+          <button className=' btn btn-warning mt-4' onClick={handleBrowseAgain}><h4>Browse again</h4></button>
         </div>
 )}
  </>   ):(
