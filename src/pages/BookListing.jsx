@@ -193,22 +193,5 @@ if(searchTerm != ""){
   }
 
 export default BookListing
-//         <div className='row'>   
-//               <div id="filterPanel" className='col-sm-3 col-lg-2 px-4 bg-black text-light collapse d-sm-block d-flex h-100'>
-//           <h4 className='pt-3'>Filter section</h4>
-// </div>
-//         <div className='col-sm-9 col-lg-10 bg-danger mb-sm-4 mb-md-5 d-flex h-100'>
-//           <h4 className='pt-3'>Books section</h4>
 
-//          </div>
-//          </div>
-
-// 88 d-flex min-vh-100
-// 147 flex-grow-1
-
-// @media (min-width: 768px) {
-//   .books-section {
-//     flex-grow: 1;
-//   }
-// }
 
