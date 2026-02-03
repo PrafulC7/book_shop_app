@@ -41,13 +41,38 @@ Watch a walkthrough (5-7 minutes) of all the major features of this app:
 
 ## Features
 
-Browse available books
-View book details (title, author, price, description)
-Add / remove books from cart
-Update book quantity in cart
-Order summary and checkout flow
-Responsive design (mobile & desktop)
+### 📖 Book Management
+- Display a list of available books
+- View detailed information for each book
+- Search books by title or author
+- Filter books by category
 
+### 🛒 Cart & Orders
+- Add books to the cart
+- Update book quantities in the cart
+- Remove books from the cart
+- Place orders successfully
+- Clear cart after order placement
+
+### 👤 User Experience
+- Display responsive UI across devices
+- Show loading indicators during API calls
+- Handle errors gracefully with messages
+- Maintain clean and intuitive navigation
+
+---
+
+## ⚙️ Environment Setup
+
+This project uses environment variables for configuration.
+
+### 📄 Create a `.env` file in the root directory
+```
+env
+PORT=3000
+MONGO_URI=mongodb+srv://neoGStudent:neoGStudentBD@neog.acigu1h.mongodb.net/?retryWrites=true&w=majority&appName=neoG
+```
+---
 ## API Reference
 ### **GET /api/categories**<br>
 List All Categories<br>
@@ -86,7 +111,7 @@ Sample Response:<br>
 [{_id, title, category, imgUrl, rating, price, description...},{_id,title,...}...]
 ```
 ### **GET /api/orders**<br>
-Ordres List<br>
+Orders List<br>
 Sample Response:<br>
 ```
 [{_id,[{title, category,...},{title,...},...],[{},{},...],...}...]
